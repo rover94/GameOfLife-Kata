@@ -12,13 +12,16 @@ public class Game {
 	public Board getNextBoard() {
 		Board result = new Board(this.board.getX(), this.board.getY());
 		for (int x = 0; x < this.board.getX(); x++) {
-			for (int y = 0; y < this.board.getX(); y++) {
+			for (int y = 0; y < this.board.getY(); y++) {
 				final TableStatuses element = this.board.getElement(x, y);
 				final Integer neighbourCount = this.getNeighbourCount(x, y);
 				if (element == ALIVE && neighbourCount == 3) {
 					result.setAlive(x, y);
 				}
 				if (element == ALIVE && neighbourCount == 2) {
+					result.setAlive(x, y);
+				}
+				if (element == DEAD && neighbourCount == 3) {
 					result.setAlive(x, y);
 				}
 //				if (element == ALIVE )

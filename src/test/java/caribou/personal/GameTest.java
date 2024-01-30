@@ -77,4 +77,16 @@ class GameTest {
 		assertThat(nextBoard.getElement(1, 0)).isEqualTo(ALIVE);
 		assertThat(nextBoard.getElement(0, 1)).isEqualTo(ALIVE);
 	}
+	
+	@Test
+	void oneDeadCellWithThreeNeighbourBecomeAlive() {
+		final Board board = new Board(3, 3);
+		board.setAlive(0, 0);
+		board.setAlive(1, 0);
+		board.setAlive(0, 1);
+		
+		final Board nextBoard = new Game(board).getNextBoard();
+		
+		assertThat(nextBoard.getElement(1, 1)).isEqualTo(ALIVE);
+	}
 }
