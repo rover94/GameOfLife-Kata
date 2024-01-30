@@ -7,6 +7,7 @@ import static caribou.personal.TableStatuses.DEAD;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
+	
 	@Test
 	void oneCellCanBeDead() {
 		final Board board = new Board(1, 1);

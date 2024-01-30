@@ -1,7 +1,5 @@
 package caribou.personal;
 
-import java.util.List;
-
 import static caribou.personal.TableStatuses.*;
 
 public class Board {
@@ -33,13 +31,14 @@ public class Board {
 	}
 	
 	public TableStatuses getElement(final int x, final int y) {
- 		if (x < 0 || y < 0) {
-			 return DEAD;
-		}
- 		if (x >= this.x || y >= this.y) {
+ 		if (this.outOfBound(x, this.x) || this.outOfBound(y, this.y)) {
 			 return DEAD;
 		}
 		return this.grid[x][y];
+	}
+	
+	private boolean outOfBound(final int value, final int max) {
+		return value < 0 || value >= max;
 	}
 	
 	public void setAlive(final int x, final int y) {
